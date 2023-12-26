@@ -1,7 +1,7 @@
 from pathlib import Path
 from threading import Lock
 from datetime import date
-from typing import List, Dict, Union, Optional
+from typing import Dict, Union
 
 from pytest import Item
 
