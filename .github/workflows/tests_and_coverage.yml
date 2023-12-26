@@ -31,6 +31,10 @@ jobs:
       shell: bash
       run: pip list
 
+    - name: Create a file for tests
+      run: python run_before_tests.py
+      run: python -c 'import os; print(open(os.path.join("examples", "forbidding_file.txt"), "r").read())'
+
     - name: Run tests and show coverage on the command line
       run: coverage run --source=antitesting --omit="*tests*" -m pytest --cache-clear --assert=plain && coverage report -m
 
