@@ -1,8 +1,11 @@
 from pathlib import Path
 from threading import Lock
+from datetime import date
 from typing import List, Dict, Union, Optional
 
-from pytest import Session, Config, Item, hookimpl
+from pytest import Item
+
+from antitesting.specification import TestSpecification
 
 
 class DisabledTestsCollector:
