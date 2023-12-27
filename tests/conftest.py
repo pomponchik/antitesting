@@ -1,4 +1,5 @@
-from antitesting import add_forbidding_file
+import os
+import antitesting
 
 
-add_forbidding_file('examples/forbidding_file.txt')
+antitesting(os.path.join('examples', 'forbidding_file.txt'))
