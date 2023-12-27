@@ -1,30 +1,30 @@
-def forbidden_test_1():
+def test_forbidden_test_1():
     assert False
 
 
-def forbidden_test_2():
+def test_forbidden_test_2():
     assert True
 
 
-def forbidden_test_3():
+def test_forbidden_test_3():
     assert False
 
 
-def forbidden_test_4():
+def test_forbidden_test_4():
     assert False
 
 
-def forbidden_test_5():
+def test_forbidden_test_5():
     assert False
 
 
-def forbidden_test_6():
+def test_forbidden_test_6():
     assert False
 
 
-def forbidden_test_7():
+def test_forbidden_test_7():
     assert False
 
 
-def forbidden_test_8():
+def test_forbidden_test_8():
     assert False
