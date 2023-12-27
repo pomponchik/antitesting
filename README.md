@@ -10,7 +10,7 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 
-There are standard ways to temporarily disable individual tests. One of them is [`pytest.mark.skip`](https://docs.pytest.org/en/latest/how-to/skipping.html#skipping-test-functions). However, this plugin extends the standard features of Pytest. Now you can put the names of the disabled tests in a separate file, and then correct and supplement them without going into the source code of the tests.
+There are standard ways to temporarily disable individual tests. As an example, using of the [`pytest.mark.skip`](https://docs.pytest.org/en/latest/how-to/skipping.html#skipping-test-functions) decorator. This plugin extends the standard features of Pytest. Now you can put the names of the disabled tests in a separate file, and then correct and supplement them without going into the source code of the tests.
 
 Install the plugin:
 
