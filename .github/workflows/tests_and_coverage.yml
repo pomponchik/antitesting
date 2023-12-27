@@ -35,10 +35,13 @@ jobs:
       run:   |
              if [ "$RUNNER_OS" == "Linux" ]; then
                   python scripts/run_before_tests.py
+                  cat examples/forbidding_file.txt
              elif [ "$RUNNER_OS" == "macOS" ]; then
                   python scripts/run_before_tests.py
+                  cat examples/forbidding_file.txt
              elif [ "$RUNNER_OS" == "Windows" ]; then
                   python scripts\run_before_tests.py
+                  cat examples\forbidding_file.txt
              else
                   echo "$RUNNER_OS not supported"
                   exit 1
