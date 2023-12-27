@@ -29,6 +29,11 @@ classifiers = [
     'Framework :: Pytest',
 ]
 
+[project.entry_points]
+pytest11 = [
+    "antitesting = antitesting.hook",
+]
+
 [project.urls]
 'Source' = 'https://github.com/pomponchik/antitesting'
 'Tracker' = 'https://github.com/pomponchik/antitesting/issues'

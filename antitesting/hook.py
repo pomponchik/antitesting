@@ -10,5 +10,7 @@ def pytest_collection_modifyitems(session: Session, config: Config, items: List[
     forbidden_ids = [index for index, item in enumerate(items) if item in collector]
     forbidden_ids.reverse()
 
+    print(forbidden_ids)
+
     for item_id in forbidden_ids:
         items.pop(item_id)
