@@ -32,7 +32,18 @@ jobs:
       run: pip list
 
     - name: Create a file for tests
-      run: python run_before_tests.py
+      if: runner.os == 'Linux'
+      run: python scripts/run_before_tests.py
+
+    - name: Create a file for tests
+      if: runner.os == 'Windows'
+      run: python scripts\run_before_tests.py
+
+    - name: Create a file for tests
+      if: runner.os == 'macOS'
+      run: python scripts/run_before_tests.py
+
+    - name: Print a file for tests
       run: python -c 'import os; print(open(os.path.join("examples", "forbidding_file.txt"), "r").read())'
 
     - name: Run tests and show coverage on the command line
