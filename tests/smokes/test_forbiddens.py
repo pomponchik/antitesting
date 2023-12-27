@@ -12,3 +12,19 @@ def forbidden_test_3():
 
 def forbidden_test_4():
     assert False
+
+
+def forbidden_test_5():
+    assert False
+
+
+def forbidden_test_6():
+    assert False
+
+
+def forbidden_test_7():
+    assert False
+
+
+def forbidden_test_8():
+    assert False
