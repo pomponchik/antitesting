@@ -39,6 +39,9 @@ class DisabledTestsCollector:
 
         return True
 
+    def __iter__(self):
+        yield from self.tests.values()
+
     def collect(self, tests_names: List[str]) -> None:
         for name in tests_names:
             if not isinstance(name, str):
