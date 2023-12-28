@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/pomponchik/antitesting/develop/docs/assets/logo_1.png)
+![logo](https://raw.githubusercontent.com/pomponchik/antitesting/develop/docs/assets/logo_2.png)
 
 # antitesting: no more testing
 
