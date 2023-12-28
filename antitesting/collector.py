@@ -39,7 +39,7 @@ class DisabledTestsCollector:
 
         return True
 
-    def __iter__(self):
+    def __iter__(self) -> Generator[Specification, None, None]:
         yield from self.tests.values()
 
     def check_unique_test_names(self, items: List[ItemProtocol]) -> None:
