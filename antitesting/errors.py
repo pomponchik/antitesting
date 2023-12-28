@@ -1,0 +1,2 @@
+class UndefinedTestName(Exception):
+    pass
