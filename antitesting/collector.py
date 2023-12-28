@@ -42,9 +42,9 @@ class DisabledTestsCollector:
     def collect(self, tests_names: List[str]) -> None:
         for name in tests_names:
             if not isinstance(name, str):
-                raise ValueError()
+                raise ValueError(f'Only a string can be passed as the name of the test. You passed "{name}" ({type(name).__name__}).')
             if not name.isidentifier():
-                raise ValueError()
+                raise ValueError(f'Invalid test name: "{name}".')
 
             self.add_test(
                 TestSpecification(
@@ -80,14 +80,16 @@ class DisabledTestsCollector:
         if ':' in line:
             splitted_line = [chunk for chunk in line.split(':') if chunk]
             if len(splitted_line) != 2:
-                raise ValueError()
+                raise ValueError('You can specify either the name of the test, or the name of the test and the date before which it is disabled, in the format {test_name}:{date}.')
             name = splitted_line[0]
             date_as_string = splitted_line[1]
             splitted_string_date = [chunk.strip() for chunk in date_as_string.split('.') if chunk.strip()]
+
             if len(splitted_string_date) != 3:
-                raise ValueError()
+                raise ValueError('The date must consist of three numbers in and two dots in the format "DD.MM.YYYY".')
             if not all(map(lambda x: x.isdigit(), splitted_string_date)):
-                raise ValueError()
+                raise ValueError('The date must consist of three numbers in and two dots in the format "DD.MM.YYYY".')
+
             date_before_disabled = date(
                 day=int(splitted_string_date[0]),
                 month=int(splitted_string_date[1]),
@@ -101,7 +103,7 @@ class DisabledTestsCollector:
         name = name.strip()
 
         if not name.isidentifier():
-            raise ValueError(f'"{name}"')
+            raise ValueError(f'Invalid test name: "{name}".')
 
         return TestSpecification(name=name, date_before_disabled=date_before_disabled)
 
