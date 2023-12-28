@@ -1,5 +1,3 @@
-from typing import Any
-
 try:
     from typing import Protocol, runtime_checkable
 except ImportError:  # pragma: no cover
