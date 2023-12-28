@@ -28,3 +28,11 @@ def test_forbidden_test_7():
 
 def test_forbidden_test_8():
     assert False
+
+
+def test_forbidden_test_9():
+    assert False
+
+
+def test_forbidden_test_10():
+    assert False

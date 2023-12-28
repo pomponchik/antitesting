@@ -40,9 +40,19 @@ class DisabledTestsCollector:
     def read_file(self, path: Path) -> None:
         with open(path, 'r', encoding='utf-8') as file:
             for line in file:
+                line = self.normalize_line(line)
                 if line:
                     test_specification = self.convert_line_to_specification(line)
                     self.add_test(test_specification)
+
+    def normalize_line(self, line: str) -> str:
+        line = self.cut_line(line)
+        line = line.strip()
+        return line
+
+    def cut_line(self, line: str) -> str:
+        splitted_line = line.split('#')
+        return splitted_line[0]
 
     def cannibalize(self, other_collector: 'DisabledTestsCollector') -> None:
         for test_specification in other_collector.tests.values():
@@ -75,7 +85,7 @@ class DisabledTestsCollector:
         name = name.strip()
 
         if not name.isidentifier():
-            raise ValueError()
+            raise ValueError(f'"{name}"')
 
         return TestSpecification(name=name, date_before_disabled=date_before_disabled)
 
