@@ -1,7 +1,7 @@
 from pathlib import Path
 from threading import Lock
 from datetime import date
-from typing import Dict, Union
+from typing import List, Dict, Union
 
 from pytest import Item
 
@@ -9,7 +9,7 @@ from antitesting.specification import TestSpecification
 
 
 class DisabledTestsCollector:
-    def __init__(self, *args: Union[str, Path, 'DisabledTestsCollector']) -> None:
+    def __init__(self, *args: Union[str, Path, 'DisabledTestsCollector', List[str]]) -> None:
         self.lock = Lock()
         self.tests: Dict[str, TestSpecification] = {}
 
@@ -20,8 +20,10 @@ class DisabledTestsCollector:
                 self.read_file(item)
             elif type(item) is type(self):
                 self.cannibalize(item)
+            elif isinstance(item, list):
+                self.collect(item)
             else:
-                raise ValueError()
+                raise ValueError(f'"{item}" ({type(item).__name__}) is not supported as an initialization argument for {type(self).__name__}.')
 
     def __contains__(self, item: Union[str, Item]) -> bool:
         if isinstance(item, str):
@@ -36,6 +38,20 @@ class DisabledTestsCollector:
             return False
 
         return True
+
+    def collect(self, tests_names: List[str]) -> None:
+        for name in tests_names:
+            if not isinstance(name, str):
+                raise ValueError()
+            if not name.isidentifier():
+                raise ValueError()
+
+            self.add_test(
+                TestSpecification(
+                    name=name,
+                    date_before_disabled=date.max,
+                )
+            )
 
     def read_file(self, path: Path) -> None:
         with open(path, 'r', encoding='utf-8') as file:
