@@ -6,6 +6,7 @@ from typing import List, Dict, Union
 from pytest import Item
 
 from antitesting.specification import TestSpecification
+from antitesting.errors import UndefinedTestName
 
 
 class DisabledTestsCollector:
@@ -41,6 +42,12 @@ class DisabledTestsCollector:
 
     def __iter__(self):
         yield from self.tests.values()
+
+    def check_unique_test_names(self, items: List[Item]) -> None:
+        unique_items_names = {item.name for item in items}
+        for collected_test in collector:
+            if collected_test.name not in unique_items_names:
+                raise UndefinedTestName(f'There is no test named "{collected_test.name}". You specified this name in the skip list.')
 
     def collect(self, tests_names: List[str]) -> None:
         for name in tests_names:
