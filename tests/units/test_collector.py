@@ -1,7 +1,5 @@
 from datetime import date
 
-from pytest import Item, Config
-
 from antitesting.collector import DisabledTestsCollector
 from antitesting.specification import Specification
 
