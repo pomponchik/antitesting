@@ -32,20 +32,9 @@ jobs:
       run: pip list
 
     - name:  Create a file for tests
-      run:   |
-             if [ "$RUNNER_OS" == "Linux" ]; then
-                  python scripts/run_before_tests.py
-                  cat examples/forbidding_file.txt
-             elif [ "$RUNNER_OS" == "macOS" ]; then
-                  python scripts/run_before_tests.py
-                  cat examples/forbidding_file.txt
-             elif [ "$RUNNER_OS" == "Windows" ]; then
-                  python scripts/run_before_tests.py
-                  cat examples/forbidding_file.txt
-             else
-                  echo "$RUNNER_OS not supported"
-                  exit 1
-             fi
+      run: |
+        python scripts/run_before_tests.py
+        cat examples/forbidding_file.txt
       shell: bash
 
     - name: Run tests and show coverage on the command line
