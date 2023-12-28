@@ -1,7 +1,7 @@
 from pathlib import Path
 from threading import Lock
 from datetime import date
-from typing import List, Dict, Union
+from typing import Generator, List, Dict, Union
 
 from antitesting.specification import Specification
 from antitesting.errors import UndefinedTestName
@@ -44,7 +44,7 @@ class DisabledTestsCollector:
 
     def check_unique_test_names(self, items: List[ItemProtocol]) -> None:
         unique_items_names = {item.name for item in items}
-        for collected_test in collector:
+        for collected_test in self:
             if collected_test.name not in unique_items_names:
                 raise UndefinedTestName(f'There is no test named "{collected_test.name}". You specified this name in the skip list.')
 
