@@ -26,6 +26,7 @@ Create one or more files containing the names of the tests that you want to disa
 test_1
 test_2 : 12.12.2012
 test_3 : 12.12.2025
+test_4 : 13.12.2025 # fix after test_3
 ```
 
 Finally, add these lines to the file `conftest.py`:
@@ -36,4 +37,4 @@ import antitesting
 antitesting("disabled_tests.txt")
 ```
 
-The `disabled_tests.txt` file that we created contains the names of the tests that we want to disable. This is equivalent to putting a  [`skip`](https://docs.pytest.org/en/latest/how-to/skipping.html#skipping-test-functions) decorator on each of them, but it does not require getting into the source code of the tests and saves you time. You could also see the dates in the file in the format `DD.MM.YYYY`. If there is a date in this format in the line with the test name, the test will be ignored only until that date, and after that it will become available.
+The `disabled_tests.txt` file that we created contains the names of the tests that we want to disable. This is equivalent to putting a  [`skip`](https://docs.pytest.org/en/latest/how-to/skipping.html#skipping-test-functions) decorator on each of them, but it does not require getting into the source code of the tests and saves you time. You could also see the dates in the file in the format `DD.MM.YYYY`. If there is a date in this format in the line with the test name, the test will be ignored only until that date, and after that it will become available. If necessary, you can accompany the lines with comments separated by sharps ("#").
