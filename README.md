@@ -1,7 +1,5 @@
 ![logo](https://raw.githubusercontent.com/pomponchik/antitesting/main/docs/assets/logo_2.png)
 
-# antitesting: no more testing
-
 [![Downloads](https://static.pepy.tech/badge/antitesting/month)](https://pepy.tech/project/antitesting)
 [![Downloads](https://static.pepy.tech/badge/antitesting)](https://pepy.tech/project/antitesting)
 [![codecov](https://codecov.io/gh/pomponchik/antitesting/graph/badge.svg?token=jHPEZfRrjC)](https://codecov.io/gh/pomponchik/antitesting)
