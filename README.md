@@ -1,3 +1,5 @@
+![logo](https://raw.githubusercontent.com/pomponchik/antitesting/develop/docs/assets/logo_1.png)
+
 # antitesting: no more testing
 
 [![Downloads](https://static.pepy.tech/badge/antitesting/month)](https://pepy.tech/project/antitesting)
