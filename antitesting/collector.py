@@ -19,7 +19,7 @@ class DisabledTestsCollector:
             elif isinstance(item, Path):
                 self.read_file(item)
             elif type(item) is type(self):
-                self.cannibalize(item)
+                self.cannibalize(item)  # type: ignore[arg-type]
             elif isinstance(item, list):
                 self.collect(item)
             else:
