@@ -3,16 +3,15 @@ from threading import Lock
 from datetime import date
 from typing import List, Dict, Union
 
-from pytest import Item
-
-from antitesting.specification import TestSpecification
+from antitesting.specification import Specification
 from antitesting.errors import UndefinedTestName
+from antitesting.protocols.item import ItemProtocol
 
 
 class DisabledTestsCollector:
     def __init__(self, *args: Union[str, Path, 'DisabledTestsCollector', List[str]]) -> None:
         self.lock = Lock()
-        self.tests: Dict[str, TestSpecification] = {}
+        self.tests: Dict[str, Specification] = {}
 
         for item in args:
             if isinstance(item, str):
@@ -26,10 +25,10 @@ class DisabledTestsCollector:
             else:
                 raise ValueError(f'"{item}" ({type(item).__name__}) is not supported as an initialization argument for {type(self).__name__}.')
 
-    def __contains__(self, item: Union[str, Item]) -> bool:
+    def __contains__(self, item: Union[str, ItemProtocol]) -> bool:
         if isinstance(item, str):
             test_specification = self.tests.get(item, None)
-        elif isinstance(item, Item):
+        elif isinstance(item, ItemProtocol):
             test_specification = self.tests.get(item.name, None)
 
         if test_specification is None:
@@ -43,7 +42,7 @@ class DisabledTestsCollector:
     def __iter__(self):
         yield from self.tests.values()
 
-    def check_unique_test_names(self, items: List[Item]) -> None:
+    def check_unique_test_names(self, items: List[ItemProtocol]) -> None:
         unique_items_names = {item.name for item in items}
         for collected_test in collector:
             if collected_test.name not in unique_items_names:
@@ -57,7 +56,7 @@ class DisabledTestsCollector:
                 raise ValueError(f'Invalid test name: "{name}".')
 
             self.add_test(
-                TestSpecification(
+                Specification(
                     name=name,
                     date_before_disabled=date.max,
                 )
@@ -84,7 +83,7 @@ class DisabledTestsCollector:
         for test_specification in other_collector.tests.values():
             self.add_test(test_specification)
 
-    def convert_line_to_specification(self, line: str) -> TestSpecification:
+    def convert_line_to_specification(self, line: str) -> Specification:
         line = line.strip()
 
         if ':' in line:
@@ -115,9 +114,9 @@ class DisabledTestsCollector:
         if not name.isidentifier():
             raise ValueError(f'Invalid test name: "{name}".')
 
-        return TestSpecification(name=name, date_before_disabled=date_before_disabled)
+        return Specification(name=name, date_before_disabled=date_before_disabled)
 
-    def add_test(self, test_specification: TestSpecification) -> None:
+    def add_test(self, test_specification: Specification) -> None:
         with self.lock:
             if test_specification.name not in self.tests:
                 self.tests[test_specification.name] = test_specification

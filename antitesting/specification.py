@@ -3,7 +3,7 @@ from datetime import datetime, date
 
 
 @dataclass
-class TestSpecification:
+class Specification:
     name: str
     date_before_disabled: date
     disabled: bool = True
