@@ -4,6 +4,7 @@
 [![Downloads](https://static.pepy.tech/badge/antitesting)](https://pepy.tech/project/antitesting)
 [![codecov](https://codecov.io/gh/pomponchik/antitesting/graph/badge.svg?token=jHPEZfRrjC)](https://codecov.io/gh/pomponchik/antitesting)
 [![Test-Package](https://github.com/pomponchik/antitesting/actions/workflows/tests_and_coverage.yml/badge.svg)](https://github.com/pomponchik/antitesting/actions/workflows/tests_and_coverage.yml)
+[![Hits-of-Code](https://hitsofcode.com/github/pomponchik/antitesting?branch=main)](https://hitsofcode.com/github/pomponchik/antitesting/view?branch=main)
 [![Python versions](https://img.shields.io/pypi/pyversions/antitesting.svg)](https://pypi.python.org/pypi/antitesting)
 [![PyPI version](https://badge.fury.io/py/antitesting.svg)](https://badge.fury.io/py/antitesting)
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
