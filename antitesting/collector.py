@@ -4,7 +4,7 @@ from datetime import date
 from typing import Generator, List, Dict, Union
 
 from antitesting.specification import Specification
-from antitesting.errors import UndefinedTestName
+from antitesting.errors import UndefinedTestNameError
 from antitesting.protocols.item import ItemProtocol
 
 
@@ -46,7 +46,7 @@ class DisabledTestsCollector:
         unique_items_names = {item.name for item in items}
         for collected_test in self:
             if collected_test.name not in unique_items_names:
-                raise UndefinedTestName(f'There is no test named "{collected_test.name}". You specified this name in the skip list.')
+                raise UndefinedTestNameError(f'There is no test named "{collected_test.name}". You specified this name in the skip list.')
 
     def collect(self, tests_names: List[str]) -> None:
         for name in tests_names:
