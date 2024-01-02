@@ -72,3 +72,12 @@ def test_collect_method_with_list_contains_non_str():
         collection.collect(['lol', 1])
 
     assert collection.tests == {}
+
+
+def test_collect_method_with_list_contains_non_identifier():
+    collection = DisabledTestsCollector()
+
+    with pytest.raises(ValueError, match=re.escape('Invalid test name: "   mek!".')):
+        collection.collect(['lol', '   mek!'])
+
+    assert collection.tests == {}
