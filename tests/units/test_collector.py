@@ -1,6 +1,6 @@
 import re
 import subprocess
-from datetime import date
+from datetime import datetime, date
 
 import pytest
 
@@ -81,3 +81,17 @@ def test_collect_method_with_list_contains_non_identifier():
         collection.collect(['lol', '   mek!'])
 
     assert collection.tests == {}
+
+
+def test_collect():
+    test_names = ['test_lol', 'test_kek']
+    collection = DisabledTestsCollector()
+
+    collection.collect(test_names)
+
+    assert list(collection.tests.keys()) == test_names
+
+    for name, item in zip(test_names, collection.tests.values()):
+        assert item.name == name
+        assert item.date_before_disabled > datetime.now().date()
+        assert item.disabled == True
