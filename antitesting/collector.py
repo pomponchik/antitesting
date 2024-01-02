@@ -44,7 +44,7 @@ class DisabledTestsCollector:
 
     def check_unique_test_names(self, items: List[ItemProtocol]) -> None:
         unique_items_names = {item.name for item in items}
-        
+
         for collected_test in self:
             if collected_test.name not in unique_items_names:
                 raise UndefinedTestNameError(f'There is no test named "{collected_test.name}". You specified this name in the skip list.')
@@ -56,6 +56,7 @@ class DisabledTestsCollector:
             if not name.isidentifier():
                 raise ValueError(f'Invalid test name: "{name}".')
 
+        for name in tests_names:
             self.add_test(
                 Specification(
                     name=name,
