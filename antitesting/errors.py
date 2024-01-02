@@ -1,2 +1,2 @@
-class UndefinedTestName(Exception):
+class UndefinedTestNameError(Exception):
     pass
