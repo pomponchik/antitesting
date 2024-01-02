@@ -1,3 +1,4 @@
+import re
 import subprocess
 from datetime import date
 
@@ -53,7 +54,7 @@ def test_check_unique_test_names_good_way():
 
 def test_check_unique_test_names_in_real_life(forbidding_file_changer):
     new_test_name = 'test_kek'
-    
+
     with forbidding_file_changer([new_test_name]):
         running_result = subprocess.run(['pytest'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, bufsize=10000)
 
@@ -62,3 +63,12 @@ def test_check_unique_test_names_in_real_life(forbidding_file_changer):
         stdout = running_result.stdout.decode('utf-8')
 
         assert f'antitesting.errors.UndefinedTestNameError: There is no test named "{new_test_name}". You specified this name in the skip list.' in stdout
+
+
+def test_collect_method_with_list_contains_non_str():
+    collection = DisabledTestsCollector()
+
+    with pytest.raises(ValueError, match=re.escape('Only a string can be passed as the name of the test. You passed "1" (int).')):
+        collection.collect(['lol', 1])
+
+    assert collection.tests == {}
