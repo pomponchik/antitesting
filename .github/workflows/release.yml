@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Install dependencies
         shell: bash
-        run: pip install -r requirements_dev.txt
+        run: pip install build==0.9.0
 
       - name: Build the project
         shell: bash
