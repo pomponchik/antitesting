@@ -26,10 +26,6 @@ jobs:
         shell: bash
         run: pip install -r requirements_dev.txt
 
-      - name: Install dependencies
-        shell: bash
-        run: pip install build==0.9.0
-
       - name: Build the project
         shell: bash
         run: python -m build .
