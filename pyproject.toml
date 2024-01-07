@@ -35,6 +35,9 @@ classifiers = [
 [project.entry-points.pytest11]
 antitesting = "antitesting.plugin"
 
+[tool.setuptools.package-data]
+"antitesting" = ["py.typed"]
+
 [project.urls]
 'Source' = 'https://github.com/pomponchik/antitesting'
 'Tracker' = 'https://github.com/pomponchik/antitesting/issues'
