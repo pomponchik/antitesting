@@ -4,6 +4,7 @@ from datetime import datetime, date
 
 import pytest
 
+import antitesting
 from antitesting.collector import DisabledTestsCollector
 from antitesting.specification import Specification
 from antitesting.errors import UndefinedTestNameError
@@ -95,3 +96,9 @@ def test_collect():
         assert item.name == name
         assert item.date_before_disabled > datetime.now().date()
         assert item.disabled == True
+
+
+def test_import_antitesting_from_antitesting():
+    from antitesting import antitesting as second_antitesting
+
+    assert antitesting is second_antitesting
