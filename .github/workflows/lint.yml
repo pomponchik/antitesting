@@ -28,4 +28,4 @@ jobs:
 
     - name: Run ruff
       shell: bash
-      run: ruff antitesting
+      run: ruff check antitesting
