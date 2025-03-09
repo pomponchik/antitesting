@@ -26,6 +26,14 @@ jobs:
       shell: bash
       run: mypy antitesting --strict
 
+    - name: Run mypy for tests
+      shell: bash
+      run: mypy tests
+
     - name: Run ruff
       shell: bash
       run: ruff check antitesting
+
+    - name: Run ruff for tests
+      shell: bash
+      run: ruff check tests
