@@ -6,7 +6,7 @@ from antitesting.state import collector
 from antitesting.protocols.item import ItemProtocol
 
 
-@hookimpl  # type: ignore[misc]
+@hookimpl
 def pytest_collection_modifyitems(session: Session, config: Config, items: List[ItemProtocol]) -> None:
     collector.check_unique_test_names(items)
 
