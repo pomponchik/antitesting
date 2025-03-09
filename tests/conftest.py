@@ -8,7 +8,7 @@ import antitesting
 
 
 forbidding_file_path = os.path.join('examples', 'forbidding_file.txt')
-antitesting(forbidding_file_path)
+antitesting(forbidding_file_path)  # type: ignore[operator]
 
 
 @pytest.fixture
