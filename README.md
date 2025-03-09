@@ -31,7 +31,7 @@ test_4 : 13.12.2025 # fix after test_3
 Finally, add these lines to the file `conftest.py`:
 
 ```python
-import antitesting
+import antitesting  # If you use static type analyzers like mypy, importing using the expression "from antitesting import antitesting" is more suitable for you.
 
 antitesting("disabled_tests.txt")
 ```
